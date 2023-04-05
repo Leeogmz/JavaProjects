@@ -77,7 +77,11 @@ public class App {
         System.out.println("Quanto você deseja sacar? ");
         insere = leitura.nextDouble();
         conta.saca(insere);
-       }
+       } else if (escolha > 5 || escolha < 0 ) {
+        System.out.println("Opção inválida!");
+      }
+        
+
 
     }
   } 
