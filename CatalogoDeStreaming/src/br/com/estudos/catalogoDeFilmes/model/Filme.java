@@ -1,6 +1,8 @@
 package br.com.estudos.catalogoDeFilmes.model;
 
-public class Filme extends Conteudo {
+import br.com.estudos.catalogoDeFilmes.calculos.Classificavel;
+
+public class Filme extends Conteudo implements Classificavel {
 
     public Filme(String nome, int anoLancamento, boolean inclusoNoPlano) {
         super(nome, anoLancamento, inclusoNoPlano);
@@ -15,4 +17,10 @@ public class Filme extends Conteudo {
     public void setDiretor(String diretor) {
         this.diretor = diretor;
     }
+
+    @Override
+    public int getClassificacao() {
+        return (int) media()/2;
+    }
+
 }

@@ -1,4 +1,6 @@
 import br.com.estudos.catalogoDeFilmes.calculos.CalculaTempo;
+import br.com.estudos.catalogoDeFilmes.calculos.FiltroRecomendacao;
+import br.com.estudos.catalogoDeFilmes.model.Epsodio;
 import br.com.estudos.catalogoDeFilmes.model.Filme;
 import br.com.estudos.catalogoDeFilmes.model.Serie;
 
@@ -28,8 +30,16 @@ public class Principal {
         calculadora.inclui(misterioNoMediterraneo);
         calculadora.inclui(vikings);
 
-
-
         System.out.println(calculadora.getTempoTotal());
+
+        FiltroRecomendacao filtro = new FiltroRecomendacao();
+        filtro.filtra(oPoderoChefao);
+
+        Epsodio epsodio = new Epsodio();
+        epsodio.setNumero(1);
+        epsodio.setSerie(vikings);
+        epsodio.setTotalVisualizacoes(300);
+        filtro.filtra(epsodio);
+
     }
 }

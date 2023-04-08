@@ -1,6 +1,8 @@
 package br.com.estudos.catalogoDeFilmes.model;
 
-public class Serie extends Conteudo {
+import br.com.estudos.catalogoDeFilmes.calculos.Classificavel;
+
+public class Serie extends Conteudo implements Classificavel {
 
     private int temporadas;
     private int epsodiosPorTemporada;
@@ -47,5 +49,10 @@ public class Serie extends Conteudo {
     @Override
     public int getDuracaoEmMinutos() {
         return temporadas * epsodiosPorTemporada * minutosPorEpsodio;
+    }
+
+    @Override
+    public int getClassificacao() {
+        return (int) media()/2;
     }
 }

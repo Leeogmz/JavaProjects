@@ -2,7 +2,7 @@ package br.com.estudos.catalogoDeFilmes.model;
 
 import br.com.estudos.catalogoDeFilmes.calculos.Classificavel;
 
-public class Epsodios implements Classificavel {
+public class Epsodio implements Classificavel {
 
     private int numero;
     private String nome;
