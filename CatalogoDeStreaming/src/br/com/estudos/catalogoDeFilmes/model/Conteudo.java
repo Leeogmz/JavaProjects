@@ -1,6 +1,6 @@
 package br.com.estudos.catalogoDeFilmes.model;
 
-public class Conteudo {
+public class Conteudo implements Comparable<Conteudo> {
 
     private String nome;
     private int anoLancamento;
@@ -63,6 +63,11 @@ public class Conteudo {
 
     public double media () {
         return somaAvaliacao / totalAvalicoes;
+    }
+
+    @Override
+    public int compareTo(Conteudo outroConteudo) {
+         return this.getNome().compareTo(outroConteudo.getNome());
     }
 
 }

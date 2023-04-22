@@ -55,4 +55,10 @@ public class Serie extends Conteudo implements Classificavel {
     public int getClassificacao() {
         return (int) media()/2;
     }
+
+    @Override
+    public String toString() {
+        
+        return "Serie: " + this.getNome() + " (" + this.getAnoLancamento() + ")"; 
+    }
 }

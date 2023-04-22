@@ -1,3 +1,4 @@
+package br.com.estudos.catalogoDeFilmes.principal;
 import java.util.ArrayList;
 
 import br.com.estudos.catalogoDeFilmes.calculos.CalculaTempo;
