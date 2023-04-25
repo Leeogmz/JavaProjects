@@ -2,6 +2,9 @@ package br.com.estudos.catalogoDeFilmes.principal;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
 import br.com.estudos.catalogoDeFilmes.model.Conteudo;
 import br.com.estudos.catalogoDeFilmes.model.Filme;
@@ -19,7 +22,7 @@ public class PrincipalComLista {
 
         Serie vikings = new Serie("Vikings", 2016, true);
 
-        ArrayList<Conteudo> conteudos = new ArrayList<>();
+        List<Conteudo> conteudos = new LinkedList<>();
         conteudos.add(misterioNoMediterraneo);
         conteudos.add(oPoderoChefao);
         conteudos.add(superMarioBros);
@@ -50,6 +53,10 @@ public class PrincipalComLista {
         Collections.sort(conteudos);
 
         System.out.println("Lista de titulos ordenados" + conteudos);
+
+
+        conteudos.sort(Comparator.comparing(Conteudo::getAnoLancamento));
+        System.out.println("ordenando por ano " + conteudos);
 
 
 
