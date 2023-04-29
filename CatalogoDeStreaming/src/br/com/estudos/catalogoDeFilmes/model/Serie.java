@@ -10,8 +10,8 @@ public class Serie extends Conteudo implements Classificavel {
     private int minutosPorEpsodio;
 
 
-    public Serie(String nome, int anoLancamento, boolean inclusoNoPlano) {
-        super(nome, anoLancamento, inclusoNoPlano);
+    public Serie(String nome, int anoLancamento) {
+        super(nome, anoLancamento);
     }
 
     public int getTemporadas() {

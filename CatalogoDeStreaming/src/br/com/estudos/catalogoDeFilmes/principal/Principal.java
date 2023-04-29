@@ -9,7 +9,7 @@ import br.com.estudos.catalogoDeFilmes.model.Serie;
 
 public class Principal {
     public static void main(String[] args) {
-        Filme oPoderoChefao = new Filme( "O poderoso chefão",1970,true);
+        Filme oPoderoChefao = new Filme( "O poderoso chefão",1970);
         oPoderoChefao.setDuracaoEmMinutos(180);
         oPoderoChefao.exibeFichaTecnica();
         oPoderoChefao.avalia(10);
@@ -18,13 +18,13 @@ public class Principal {
         System.out.println(oPoderoChefao.getTotalAvalicoes());
         System.out.println(oPoderoChefao.media());
 
-        Filme misterioNoMediterraneo = new Filme("Misterio no Mediterraneo", 2022, true);
+        Filme misterioNoMediterraneo = new Filme("Misterio no Mediterraneo", 2022);
         misterioNoMediterraneo.setDuracaoEmMinutos(180);
 
-        Filme superMarioBros = new Filme("Super Mario Bros. - O Filme",2023, true);
+        Filme superMarioBros = new Filme("Super Mario Bros. - O Filme",2023);
 
 
-        Serie vikings = new Serie("Vikings", 2016, true);
+        Serie vikings = new Serie("Vikings", 2016);
         vikings.setTemporadas(5);
         vikings.setEpsodiosPorTemporada(8);
         vikings.setMinutosPorEpsodio(40);

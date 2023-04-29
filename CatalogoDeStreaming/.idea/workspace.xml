@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3101d57-27fb-4ec7-ab78-877e7c730870" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/CatalogoDeStreaming.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/br/com/estudos/catalogoDeFilmes/principal/PrincipalComBusca.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/br/com/estudos/catalogoDeFilmes/principal/PrincipalComBusca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/com/estudos/catalogoDeFilmes/principal/PrincipalComBusca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/estudos/catalogoDeFilmes/principal/PrincipalComBusca.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +24,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/leona/OneDrive/Documentos/Estudos/JavaProjects/CatalogoDeStreaming"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

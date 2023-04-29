@@ -7,7 +7,15 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.Scanner;
 
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import br.com.estudos.catalogoDeFilmes.model.Conteudo;
+import br.com.estudos.catalogoDeFilmes.model.ConteudoOMDB;
+
 public class PrincipalComBusca {
+    
     public static void main(String[] args) throws Exception {
 
 
@@ -28,8 +36,20 @@ public class PrincipalComBusca {
 
          HttpResponse<String> response = client
          .send(request, BodyHandlers.ofString());
+         String json = response.body();
          
-         System.out.println(response.body());
+
+         Gson gson = new GsonBuilder()
+         .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+         .create();
+         //String jsonRepresentation = gson.toJson(someObject);
+         
+         ConteudoOMDB conteudoOMDB = gson.fromJson(json, ConteudoOMDB.class);
+         //System.out.println(conteudoOMDB);
+         Conteudo conteudo = new Conteudo (conteudoOMDB);
+         System.out.println(conteudo);
+
+          
         
     }
     

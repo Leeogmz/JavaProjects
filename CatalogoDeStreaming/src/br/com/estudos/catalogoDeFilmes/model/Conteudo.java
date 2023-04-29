@@ -1,24 +1,39 @@
 package br.com.estudos.catalogoDeFilmes.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Conteudo implements Comparable<Conteudo> {
 
+
+    @SerializedName("Title") 
     private String nome;
+
+    @SerializedName("Year")
     private int anoLancamento;
     private boolean inclusoNoPlano;
     private double somaAvaliacao;
     private int totalAvalicoes;
     private int duracaoEmMinutos;
 
-    public Conteudo(String nome, int anoLancamento, boolean inclusoNoPlano) {
+    public Conteudo(String nome, int anoLancamento) {
         this.nome = nome;
         this.anoLancamento = anoLancamento;
-        this.inclusoNoPlano = inclusoNoPlano;
+        
     }
+
+    
+    public Conteudo(ConteudoOMDB conteudoOMDB) {
+        this.nome = conteudoOMDB.title();
+        this.anoLancamento = Integer.valueOf(conteudoOMDB.year());
+        this.duracaoEmMinutos = Integer.valueOf(conteudoOMDB.runtime()
+        .substring(0, 3));
+    }
+
 
     public String getNome () {
         return this.nome;
     }
-
+    
     public int getAnoLancamento() {
         return anoLancamento;
     }
@@ -68,6 +83,11 @@ public class Conteudo implements Comparable<Conteudo> {
     @Override
     public int compareTo(Conteudo outroConteudo) {
          return this.getNome().compareTo(outroConteudo.getNome());
+    }
+
+    @Override
+    public String toString() {
+        return "Conteudo: " + nome + " | " + "Ano de lançamento: " + anoLancamento + " | " + "Duração em minutos: " + duracaoEmMinutos;
     }
 
 }

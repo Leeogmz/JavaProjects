@@ -14,13 +14,13 @@ public class PrincipalComLista {
 
     public static void main(String[] args) {
 
-        Filme oPoderoChefao = new Filme( "O poderoso chefão",1970,true);
+        Filme oPoderoChefao = new Filme( "O poderoso chefão",1970);
 
-        Filme misterioNoMediterraneo = new Filme("Misterio no Mediterraneo", 2022, true);
+        Filme misterioNoMediterraneo = new Filme("Misterio no Mediterraneo", 2022);
 
-        Filme superMarioBros = new Filme("Super Mario Bros. - O Filme",2023, true);
+        Filme superMarioBros = new Filme("Super Mario Bros. - O Filme",2023);
 
-        Serie vikings = new Serie("Vikings", 2016, true);
+        Serie vikings = new Serie("Vikings", 2016);
 
         List<Conteudo> conteudos = new LinkedList<>();
         conteudos.add(misterioNoMediterraneo);

@@ -4,8 +4,8 @@ import br.com.estudos.catalogoDeFilmes.calculos.Classificavel;
 
 public class Filme extends Conteudo implements Classificavel {
 
-    public Filme(String nome, int anoLancamento, boolean inclusoNoPlano) {
-        super(nome, anoLancamento, inclusoNoPlano);
+    public Filme(String nome, int anoLancamento) {
+        super(nome, anoLancamento);
     }
 
     private String diretor;
