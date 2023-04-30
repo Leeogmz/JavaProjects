@@ -2,6 +2,8 @@ package br.com.estudos.catalogoDeFilmes.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import br.com.estudos.catalogoDeFilmes.Exception.ErroDeConversaoDeAnoException;
+
 public class Conteudo implements Comparable<Conteudo> {
 
 
@@ -24,6 +26,11 @@ public class Conteudo implements Comparable<Conteudo> {
     
     public Conteudo(ConteudoOMDB conteudoOMDB) {
         this.nome = conteudoOMDB.title();
+
+    if(conteudoOMDB.year().length() > 4){
+        throw new ErroDeConversaoDeAnoException ("Não consegui converter o ano " +
+        "Porque tem mais de 4 caracteres");
+    }
         this.anoLancamento = Integer.valueOf(conteudoOMDB.year());
         this.duracaoEmMinutos = Integer.valueOf(conteudoOMDB.runtime()
         .substring(0, 3));
