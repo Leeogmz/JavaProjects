@@ -94,7 +94,7 @@ public class Conteudo implements Comparable<Conteudo> {
 
     @Override
     public String toString() {
-        return "Conteudo: " + nome + " | " + "Ano de lançamento: " + anoLancamento + " | " + "Duração em minutos: " + duracaoEmMinutos;
+        return "( Conteudo: " + nome + " | " + "Ano de lançamento: " + anoLancamento + " | " + "Duração em minutos: " + duracaoEmMinutos + " ) ";
     }
 
 }
