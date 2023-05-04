@@ -1,67 +1,66 @@
 package br.com.estudos.catalogoDeFilmes.principal;
+
 import java.util.ArrayList;
 
-import br.com.estudos.catalogoDeFilmes.calculos.CalculaTempo;
+import br.com.estudos.catalogoDeFilmes.calculos.CalculadoraDeTempo;
 import br.com.estudos.catalogoDeFilmes.calculos.FiltroRecomendacao;
-import br.com.estudos.catalogoDeFilmes.model.Epsodio;
-import br.com.estudos.catalogoDeFilmes.model.Filme;
-import br.com.estudos.catalogoDeFilmes.model.Serie;
+import br.com.estudos.catalogoDeFilmes.modelos.Episodio;
+import br.com.estudos.catalogoDeFilmes.modelos.Filme;
+import br.com.estudos.catalogoDeFilmes.modelos.Serie;
 
 public class Principal {
     public static void main(String[] args) {
-        Filme oPoderoChefao = new Filme( "O poderoso chefão",1970);
-        oPoderoChefao.setDuracaoEmMinutos(180);
-        oPoderoChefao.exibeFichaTecnica();
-        oPoderoChefao.avalia(10);
-        oPoderoChefao.avalia(8);
-        oPoderoChefao.avalia(5);
-        System.out.println(oPoderoChefao.getTotalAvalicoes());
-        System.out.println(oPoderoChefao.media());
+        Filme meuFilme = new Filme("O poderoso chefão", 1970);
+        meuFilme.setDuracaoEmMinutos(180);
+        System.out.println("Duração do filme: " + meuFilme.getDuracaoEmMinutos());
 
-        Filme misterioNoMediterraneo = new Filme("Misterio no Mediterraneo", 2022);
-        misterioNoMediterraneo.setDuracaoEmMinutos(180);
+        meuFilme.exibeFichaTecnica();
+        meuFilme.avalia(8);
+        meuFilme.avalia(5);
+        meuFilme.avalia(10);
+        System.out.println("Total de avaliações: " + meuFilme.getTotalDeAvaliacoes());
+        System.out.println(meuFilme.pegaMedia());
+        //meuFilme.somaDasAvaliacoes = 10;
+        //meuFilme.totalDeAvaliacoes = 1;
+        //System.out.println(meuFilme.pegaMedia());
 
-        Filme superMarioBros = new Filme("Super Mario Bros. - O Filme",2023);
+        Serie lost = new Serie("Lost", 2000);
+        lost.exibeFichaTecnica();
+        lost.setTemporadas(10);
+        lost.setEpisodiosPorTemporada(10);
+        lost.setMinutosPorEpisodio(50);
+        System.out.println("Duração para maratonar Lost: " + lost.getDuracaoEmMinutos());
 
+        Filme outroFilme = new Filme("Avatar", 2023);
+        outroFilme.setDuracaoEmMinutos(200);
 
-        Serie vikings = new Serie("Vikings", 2016);
-        vikings.setTemporadas(5);
-        vikings.setEpsodiosPorTemporada(8);
-        vikings.setMinutosPorEpsodio(40);
-
-        System.out.println("Duração da serie: " + vikings.getDuracaoEmMinutos() + " minutos.");
-
-        CalculaTempo calculadora = new CalculaTempo();
-        calculadora.inclui(oPoderoChefao);
-        calculadora.inclui(misterioNoMediterraneo);
-        calculadora.inclui(vikings);
-
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+        calculadora.inclui(meuFilme);
+        calculadora.inclui(outroFilme);
+        calculadora.inclui(lost);
         System.out.println(calculadora.getTempoTotal());
 
         FiltroRecomendacao filtro = new FiltroRecomendacao();
-        filtro.filtra(oPoderoChefao);
+        filtro.filtra(meuFilme);
 
-        Epsodio epsodio = new Epsodio();
-        epsodio.setNumero(1);
-        epsodio.setSerie(vikings);
-        epsodio.setTotalVisualizacoes(300);
-        filtro.filtra(epsodio);
+        Episodio episodio = new Episodio();
+        episodio.setNumero(1);
+        episodio.setSerie(lost);
+        episodio.setTotalVisualizacoes(300);
+        filtro.filtra(episodio);
+
+        var filmeDoPaulo = new Filme("Dogville", 2003);
+        filmeDoPaulo.setDuracaoEmMinutos(200);
+        filmeDoPaulo.avalia(10);
 
         ArrayList<Filme> listaDeFilmes = new ArrayList<>();
-        listaDeFilmes.add(misterioNoMediterraneo);
-        listaDeFilmes.add(oPoderoChefao);
-        listaDeFilmes.add(superMarioBros);
-
-
-        System.out.println("Tamanho da lista: " + listaDeFilmes.size());
-        System.out.println("Primeiro filme: " + listaDeFilmes.get(0).getNome());
-
-
+        listaDeFilmes.add(filmeDoPaulo);
+        listaDeFilmes.add(meuFilme);
+        listaDeFilmes.add(outroFilme);
+        System.out.println("Tamanho da lista " + listaDeFilmes.size());
+        System.out.println("Primeiro filme " + listaDeFilmes.get(0).getNome());
         System.out.println(listaDeFilmes);
-
-
-
-
+        System.out.println("toString do filme " + listaDeFilmes.get(0).toString());
 
 
     }

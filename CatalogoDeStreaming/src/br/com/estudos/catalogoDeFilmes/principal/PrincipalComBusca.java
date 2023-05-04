@@ -1,6 +1,11 @@
 package br.com.estudos.catalogoDeFilmes.principal;
 
 import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,47 +14,69 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import br.com.estudos.catalogoDeFilmes.model.ConsultaConteudo;
-import br.com.estudos.catalogoDeFilmes.model.Conteudo;
-import br.com.estudos.catalogoDeFilmes.model.ConteudoOMDB;
+import br.com.estudos.catalogoDeFilmes.excecao.ErroDeConversaoDeAnoException;
+import br.com.estudos.catalogoDeFilmes.modelos.Titulo;
+import br.com.estudos.catalogoDeFilmes.modelos.TituloOmdb;
 
 public class PrincipalComBusca {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        Scanner leitura = new Scanner(System.in);
+        String busca = "";
+        List<Titulo> titulos = new ArrayList<>();
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
+                .create();
 
-    public static void main(String[] args) throws Exception {
+        while (!busca.equalsIgnoreCase("sair")) {
 
-        
+            System.out.println("Digite um filme para busca: ");
+            busca = leitura.nextLine();
 
-        List<Conteudo> conteudos = new ArrayList<>();
+            if(busca.equalsIgnoreCase("sair")){
+                break;
+            }
 
-        Scanner scanner = new Scanner(System.in);
-        ConsultaConteudo consulta = new ConsultaConteudo(); 
-        
-        
+             String apiInicio = "http://www.omdbapi.com/?t=";
+             String apiKey = "&apikey=c6af06db";
 
-        //while (!conteudo.title().equalsIgnoreCase("sair")) {
-            System.out.println("Qual o filme você quer buscar? ");
+            String endereco = apiInicio + busca.replace(" ", "+") + apiKey;
+            System.out.println(endereco);
+            try {
+                HttpClient client = HttpClient.newHttpClient();
+                HttpRequest request = HttpRequest.newBuilder()
+                        .uri(URI.create(endereco))
+                        .build();
+                HttpResponse<String> response = client
+                        .send(request, HttpResponse.BodyHandlers.ofString());
 
-            ConteudoOMDB conteudo = consulta.buscaConteudo(scanner.nextLine());
+                String json = response.body();
+                System.out.println(json);
 
-            System.out.println(conteudo);
-            
+                TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
+                System.out.println(meuTituloOmdb);
+                //  try {
+                Titulo meuTitulo = new Titulo(meuTituloOmdb);
+                System.out.println("Titulo já convertido");
+                System.out.println(meuTitulo);
 
-            //if (conteudo.title().equalsIgnoreCase("sair")) {
-           //     break;
-           // }
+                titulos.add(meuTitulo);
+            } catch (NumberFormatException e) {
+                System.out.println("Aconteceu um erro: ");
+                System.out.println(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                System.out.println("Algum erro de argumento na busca, verifique o endereço");
+            } catch (ErroDeConversaoDeAnoException e) {
+                System.out.println(e.getMessage());
+            }
 
-            
+        }
+        System.out.println(titulos);
 
-            
-       // }
-
-       /* System.out.println(conteudos);
-
-        FileWriter escrita = new FileWriter("conteudo.json");
-        escrita.write(gson.toJson(conteudos));
+        FileWriter escrita = new FileWriter("filmes.json");
+        escrita.write(gson.toJson(titulos));
         escrita.close();
-        System.out.println("Programa finalizado");*/
+        System.out.println("O programa finalizou corretamente!");
 
     }
-
 }

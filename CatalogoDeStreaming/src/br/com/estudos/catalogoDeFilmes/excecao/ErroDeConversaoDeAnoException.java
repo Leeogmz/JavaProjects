@@ -1,11 +1,9 @@
-package br.com.estudos.catalogoDeFilmes.Exception;
+package br.com.estudos.catalogoDeFilmes.excecao;
 
 public class ErroDeConversaoDeAnoException extends RuntimeException {
-
     private String mensagem;
 
-
-    public ErroDeConversaoDeAnoException (String mensagem) {
+    public ErroDeConversaoDeAnoException(String mensagem) {
         this.mensagem = mensagem;
     }
 
@@ -13,5 +11,4 @@ public class ErroDeConversaoDeAnoException extends RuntimeException {
     public String getMessage() {
         return this.mensagem;
     }
-
 }

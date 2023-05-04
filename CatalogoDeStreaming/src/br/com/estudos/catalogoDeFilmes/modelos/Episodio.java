@@ -1,13 +1,20 @@
-package br.com.estudos.catalogoDeFilmes.model;
+package br.com.estudos.catalogoDeFilmes.modelos;
 
 import br.com.estudos.catalogoDeFilmes.calculos.Classificavel;
 
-public class Epsodio implements Classificavel {
-
+public class Episodio implements Classificavel {
     private int numero;
     private String nome;
     private Serie serie;
     private int totalVisualizacoes;
+
+    public int getTotalVisualizacoes() {
+        return totalVisualizacoes;
+    }
+
+    public void setTotalVisualizacoes(int totalVisualizacoes) {
+        this.totalVisualizacoes = totalVisualizacoes;
+    }
 
     public int getNumero() {
         return numero;
@@ -19,10 +26,6 @@ public class Epsodio implements Classificavel {
 
     public String getNome() {
         return nome;
-    }
-
-    public int getTotalVisualizacoes() {
-        return totalVisualizacoes;
     }
 
     public void setNome(String nome) {
@@ -37,14 +40,9 @@ public class Epsodio implements Classificavel {
         this.serie = serie;
     }
 
-    public void setTotalVisualizacoes(int totalVisualizacoes) {
-        this.totalVisualizacoes = totalVisualizacoes;
-    }
-
     @Override
     public int getClassificacao() {
-
-        if(totalVisualizacoes > 100) {
+        if (totalVisualizacoes > 100) {
             return 4;
         } else {
             return 2;
